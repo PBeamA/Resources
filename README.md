@@ -1,4 +1,4 @@
-# Assortment of hopefully useful stuff
+# A heap of hopefully helpful stuff
 ## LaTeX
 
 ## MATLAB

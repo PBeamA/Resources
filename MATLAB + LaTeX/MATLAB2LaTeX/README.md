@@ -1,4 +1,4 @@
-# MATLAB2LATEX
+# MATLAB2LaTeX
 
 Originally used RStudio (R) + Knitr so that I could input variables straight
 into LaTeX files. However there is no equivalent for MATLAB.

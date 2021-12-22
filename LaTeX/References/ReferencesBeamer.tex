@@ -1,586 +1,315 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ReferencesBeamer.tex
+%
 % Beam.Aschakulporn@otago.ac.nz
-% https://PBeamA.github.io/
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \usepackage[
-% % backend = bibtex,
-% % backend = bibtex8,
-% backend = biber,
-% style = apa,
-% citestyle = authoryear,
-% url = false,
-% doi = false,
-% eprint = false,
-% natbib = true,
-% ]{biblatex}
-% 
-% % % \iftrue
-% % \iffalse
-% % \usepackage{filecontents}
-% % \begin{filecontents*}{\jobname.bib}
-% % 
-% % \end{filecontents*}
-% % \fi
-% \addbibresource{\jobname.bib}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% https://tex.stackexchange.com/questions/379901/biblatex-how-to-match-the-journal-of-finance-bibliographic-style
+% https://pbeama.github.io/
+% Modified: Wednesday 22 December 2021 (23:43)
+% * Comments removed.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage[
-% backend = bibtex,
-% backend = bibtex8,
 backend = biber,
 style = authoryear,
-% style = apa,
 sorting = nyt,
 giveninits = false,
 uniquelist = false,
-%uniquename = init,
 uniquename = false,
 isbn = false, 
 maxcitenames = 4,
-% maxcitenames = 3,
-% maxcitenames = 2,
-% maxcitenames = 30,
 dashed = false,
 maxbibnames = 999,
 citestyle = authoryear,
-% url = false,
 doi = false,
 eprint = false,
 natbib = true,
 hyperref = true,
-% backref = true,
 citetracker = true, % http://www.stackprinter.com/export?service=tex.stackexchange&question=48846&printer=false&linktohome=true
 ]{biblatex}
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% https://tex.stackexchange.com/questions/134063/how-to-add-a-comma-between-author-and-year
-% \renewcommand*{\nameyeardelim}{\addcomma\space}
 
-% \newcommand{\citeauthoryear}[1]{\citeauthor{#1}~(\citeyear{#1})}
-
-% https://tex.stackexchange.com/questions/192368/redefine-the-printnames-command-so-as-to-change-the-font
-% \DeclareCiteCommand{\citeauthoryear}
-%   {\usebibmacro{prenote}}
-%   {\usebibmacro{citeindex}%
-%     \printtext[bibhyperref]{\printnames{labelname}~(\usebibmacro{citeyear})}}
-%   {\multicitedelim}
-%   {\usebibmacro{postnote}}
-  
-
-% \newbibmacro*{citeauthoryear}{%
-%   \iffieldundef{shorthand}
-%     {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
-%        {\usebibmacro{cite:label}%
-%         \setunit{\printdelim{nonameyeardelim}}}
-%        {\printnames{labelname}%
-%         \setunit{\printdelim{nameyeardelim}}}%
-%      \bibopenparen\usebibmacro{cite:labeldate+extradate}\bibcloseparen}
-%     {\usebibmacro{cite:shorthand}}}
-
- % \iffirstonpage
-%  
 \newbibmacro*{citeauthoryear}{%
-  % \iffieldundef{shorthand}
-  \ifciteseen
-  {\iffieldundef{shorthand}{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
-       {\usebibmacro{cite:label}%
-        \setunit{\printdelim{nonameyeardelim}}}
-       {\printnames{labelname}~%
-        }% \setunit{\printdelim{nameyeardelim}}}%
-     \bibopenparen\iffieldundef{shortjournal}{}{%
-     \printfield{shortjournal}%
-     \setunit{\printdelim{nameyeardelim}}%
-     }%
-     \usebibmacro{cite:labeldate+extradate}%
-     \bibcloseparen}{\usebibmacro{cite:shorthand}}}
-  {{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
-       {\usebibmacro{cite:label}%
-        \setunit{\printdelim{nonameyeardelim}}}
-       {\printnames{labelname}~%
-        }% \setunit{\printdelim{nameyeardelim}}}%
-     \bibopenparen     \iffieldundef{shortjournal}{}{%
-     \printfield{shortjournal}%
-     \setunit{\printdelim{nameyeardelim}}%
-     }%
-     \usebibmacro{cite:labeldate+extradate}%
-     \bibcloseparen}}%
-    }%{\usebibmacro{cite:shorthand}}}
-    
-    
-    \newbibmacro*{citeauthoryearFull}{%
-  % \iffieldundef{shorthand}
+\ifciteseen
+{\iffieldundef{shorthand}{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+{\usebibmacro{cite:label}%
+\setunit{\printdelim{nonameyeardelim}}}
+{\printnames{labelname}~%
+}% \setunit{\printdelim{nameyeardelim}}}%
+\bibopenparen\iffieldundef{shortjournal}{}{%
+\printfield{shortjournal}%
+\setunit{\printdelim{nameyeardelim}}%
+}%
+\usebibmacro{cite:labeldate+extradate}%
+\bibcloseparen}{\usebibmacro{cite:shorthand}}}
+{{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+{\usebibmacro{cite:label}%
+\setunit{\printdelim{nonameyeardelim}}}
+{\printnames{labelname}~%
+}% \setunit{\printdelim{nameyeardelim}}}%
+\bibopenparen \iffieldundef{shortjournal}{}{%
+\printfield{shortjournal}%
+\setunit{\printdelim{nameyeardelim}}%
+}%
+\usebibmacro{cite:labeldate+extradate}%
+\bibcloseparen}}%
+}%{\usebibmacro{cite:shorthand}}}
+
+\newbibmacro*{citeauthoryearFull}{%
 \ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
-       {\usebibmacro{cite:label}%
-        \setunit{\printdelim{nonameyeardelim}}}
-       {\printnames{labelname}~%
-        }% \setunit{\printdelim{nameyeardelim}}}%
-     \bibopenparen\iffieldundef{shortjournal}{}{%
-     \printfield{shortjournal}%
-     \setunit{\printdelim{nameyeardelim}}%
-     }%
-     \usebibmacro{cite:labeldate+extradate}%
-     \bibcloseparen}
+{\usebibmacro{cite:label}%
+\setunit{\printdelim{nonameyeardelim}}}
+{\printnames{labelname}~%
+}% \setunit{\printdelim{nameyeardelim}}}%
+\bibopenparen\iffieldundef{shortjournal}{}{%
+\printfield{shortjournal}%
+\setunit{\printdelim{nameyeardelim}}%
+}%
+\usebibmacro{cite:labeldate+extradate}%
+\bibcloseparen}
 
-
-%%% authoryear.cbx
 \renewbibmacro*{cite}{%
-  \iffieldundef{shorthand}
-    {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
-       {\usebibmacro{cite:label}%
-        \setunit{\printdelim{nonameyeardelim}}}
-       {\printnames{labelname}%
-        \setunit{\printdelim{nameyeardelim}}}%
-        \iffieldundef{shortjournal}{}{%
-     \printfield{shortjournal}%
-     \setunit{\printdelim{nameyeardelim}}%
-     }%
-     \usebibmacro{cite:labeldate+extradate}}
-    {\usebibmacro{cite:shorthand}}}
-
-% \makeatletter
-% \newbibmacro*{citeauthoryear}{%
-%   % \iffieldundef{shorthand}
-%   \@ifstar
-%   {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
-%        {\usebibmacro{cite:label}%
-%         \setunit{\printdelim{nonameyeardelim}}}
-%        {\printnames{labelname}~%
-%         }% \setunit{\printdelim{nameyeardelim}}}%
-%      \bibopenparen\usebibmacro{cite:labeldate+extradate}\bibcloseparen}
-%   {\ifciteseen
-%   {\iffieldundef{shorthand}{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
-%        {\usebibmacro{cite:label}%
-%         \setunit{\printdelim{nonameyeardelim}}}
-%        {\printnames{labelname}~%
-%         }% \setunit{\printdelim{nameyeardelim}}}%
-%      \bibopenparen\usebibmacro{cite:labeldate+extradate}\bibcloseparen}{\usebibmacro{cite:shorthand}}}
-%   {{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
-%        {\usebibmacro{cite:label}%
-%         \setunit{\printdelim{nonameyeardelim}}}
-%        {\printnames{labelname}~%
-%         }% \setunit{\printdelim{nameyeardelim}}}%
-%      \bibopenparen\usebibmacro{cite:labeldate+extradate}\bibcloseparen}}}%
-%     }
-% \makeatother
-
-
-% \makeatletter
-% \newbibmacro*{citeauthoryear}{%
-%   % \iffieldundef{shorthand}
-%   \@ifstar
-%   {halb}
-%   {blah}%
-%     }
-% \makeatother
-
-% \newbibmacro*{citeauthoryear}{%
-%   % \iffieldundef{shorthand}
-%   \ifciteseen{blah}{halb}
-%     }%{\usebibmacro{cite:shorthand}}}
-    
-    
-% \newbibmacro*{citeauthoryear}{%
-%   % \iffieldundef{shorthand}
-%     {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
-%        {\usebibmacro{cite:label}%
-%         \setunit{\printdelim{nonameyeardelim}}}
-%        {\printnames{labelname}~%
-%         }% \setunit{\printdelim{nameyeardelim}}}%
-%      \bibopenparen\usebibmacro{cite:labeldate+extradate}\bibcloseparen}%
-%     }%{\usebibmacro{cite:shorthand}}}
-  
-  
-% https://tex.stackexchange.com/questions/214844/and-between-last-and-second-last-cite-using-the-footcites-command-and-authory
-% \renewcommand*{\multicitedelim}{%
-%   \iflastcitekey
-%     {\addcomma\addspace\bibstring{and}}
-%     {\addcomma}%
-%   \space}
-  
-% \DeclareMultiCiteCommand[citeauthoryear]{multicitedelim}{%
-%   \iflastcitekey
-%     {\addcomma\addspace\bibstring{and}}
-%     {\addcomma}%
-%   \space}
-
-% \DeclareCiteCommand{\citeauthoryear}
-%   {\usebibmacro{prenote}}
-%   {\usebibmacro{citeindex}%
-%     \printtext[bibhyperref]{\usebibmacro{citeauthoryear}}}
-%     % \printtext[bibhyperref]{\printnames{labelname}~(\usebibmacro{citeyear})}}
-%   {\multicitedelim}
-%   {\usebibmacro{postnote}}
+\iffieldundef{shorthand}
+{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+{\usebibmacro{cite:label}%
+\setunit{\printdelim{nonameyeardelim}}}
+{\printnames{labelname}%
+\setunit{\printdelim{nameyeardelim}}}%
+\iffieldundef{shortjournal}{}{%
+\printfield{shortjournal}%
+\setunit{\printdelim{nameyeardelim}}%
+}%
+\usebibmacro{cite:labeldate+extradate}}
+{\usebibmacro{cite:shorthand}}}
 
 \DeclareCiteCommand{\citeauthoryear}
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-    \printtext[bibhyperref]{\usebibmacro{citeauthoryear}}}
-    % \printtext[bibhyperref]{\printnames{labelname}~(\usebibmacro{citeyear})}}
-  {\iflastcitekey
-    {\addcomma\addspace\bibstring{and}}
-    {\addcomma}%
-  \space}
-  {\usebibmacro{postnote}}
-
-% \DeclareCiteCommand*{\citeauthoryear}
-%   {\usebibmacro{prenote}}
-%   {\usebibmacro{citeindex}%
-%     \printtext[bibhyperref]{\usebibmacro{citeauthoryearFull}}}
-%     % \printtext[bibhyperref]{\printnames{labelname}~(\usebibmacro{citeyear})}}
-%   {\multicitedelim}
-%   {\usebibmacro{postnote}}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{citeauthoryear}}}
+{\iflastcitekey
+{\addcomma\addspace\bibstring{and}}
+{\addcomma}%
+\space}
+{\usebibmacro{postnote}}
 
 \DeclareCiteCommand*{\citeauthoryear}
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-    \printtext[bibhyperref]{\usebibmacro{citeauthoryearFull}}}
-    % \printtext[bibhyperref]{\printnames{labelname}~(\usebibmacro{citeyear})}}
-  {\iflastcitekey
-    {\addcomma\addspace\bibstring{and}}
-    {\addcomma}%
-  \space}
-  {\usebibmacro{postnote}}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{citeauthoryearFull}}}
+{\iflastcitekey
+{\addcomma\addspace\bibstring{and}}
+{\addcomma}%
+\space}
+{\usebibmacro{postnote}}
 
 \DeclareCiteCommand{\citeauthorsyear}
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-    \printtext[bibhyperref]{\printnames{labelname}'s~(\usebibmacro{citeyear})}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-  
-\DeclareCiteCommand{\citeauthorssyear}
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-    \printtext[bibhyperref]{\printnames{labelname}'~(\usebibmacro{citeyear})}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-% https://tex.stackexchange.com/questions/73913/how-can-i-use-shorthands-in-citations-from-the-first-time-with-biblatex
-% \newbibmacro*{cite}{%
-%   \usebibmacro{cite:citepages}%
-%   \ifciteseen
-%     {\iffieldundef{shorthand}
-%        {\usebibmacro{cite:short}}
-%        {\usebibmacro{cite:shorthand}}}
-%     {\usebibmacro{cite:full}}}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\printnames{labelname}'s~(\usebibmacro{citeyear})}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
 
-% Original
-% \newbibmacro*{citeyear}{%
-%   \iffieldundef{shorthand}
-%     {\iffieldundef{labelyear}
-%        {\usebibmacro{cite:label}}
-%        {\usebibmacro{cite:labeldate+extradate}}}
-%     {\usebibmacro{cite:shorthand}}}
+\DeclareCiteCommand{\citeauthorssyear}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\printnames{labelname}'~(\usebibmacro{citeyear})}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
 
 \renewbibmacro*{citeyear}{%
-  % \iffieldundef{shorthand}
-    \iffieldundef{labelyear}
-       {\usebibmacro{cite:label}}
-       {\usebibmacro{cite:labeldate+extradate}}%
-    }
-
-
-% \DeclareCiteCommand{\citeauthoryear}
-%   {\usebibmacro{prenote}}
-%   \iffieldundef{shorthand}{%
-%   {\usebibmacro{citeindex}%
-%     \printtext[bibhyperref]{\printnames{labelname}~(\usebibmacro{citeyear})}}
-%   {\multicitedelim}
-%   {\usebibmacro{cite:shorthand}}}
-%   {\usebibmacro{postnote}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% https://tex.stackexchange.com/questions/26682/how-to-create-a-citejournal-citebooktitle-cite-command-in-biblatex
-% \DeclareCiteCommand{\citejournal}
-%   {\usebibmacro{prenote}}
-%   {\usebibmacro{citeindex}%
-%     \usebibmacro{journal}}
-%   {\multicitedelim}
-%   {\usebibmacro{postnote}}
-\DeclareCiteCommand{\citejournal}
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-    \printtext[bibhyperref]{\usebibmacro{journal}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% https://tex.stackexchange.com/questions/1687/hyperlink-name-with-biblatex-authoryear
-\DeclareCiteCommand{\cite}
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \printtext[bibhyperref]{\usebibmacro{cite}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand*{\cite}
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \printtext[bibhyperref]{\usebibmacro{citeyear}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\parencite}[\mkbibparens]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-    \printtext[bibhyperref]{\usebibmacro{cite}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand*{\parencite}[\mkbibparens]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-    \printtext[bibhyperref]{\usebibmacro{citeyear}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\footcite}[\mkbibfootnote]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-  \printtext[bibhyperref]{ \usebibmacro{cite}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \printtext[bibhyperref]{\usebibmacro{cite}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\textcite}
-  {\boolfalse{cbx:parens}}
-  {\usebibmacro{citeindex}%
-   \printtext[bibhyperref]{\usebibmacro{textcite}}}
-  {\ifbool{cbx:parens}
-     {\bibcloseparen\global\boolfalse{cbx:parens}}
-     {}%
-   \multicitedelim}
-  {\usebibmacro{textcite:postnote}}
-
-
-\DeclareCiteCommand{\textcite}
- {\boolfalse{cbx:parens}}
-  {\usebibmacro{citeindex}%
-    \printtext[bibhyperref]{\printnames{labelname}%
-      \printtext{ (\printfield{year}\printtext{)}}}}
- {\ifbool{cbx:parens}
-  {\bibcloseparen\global\boolfalse{cbx:parens}}
-  {}%
- \multicitedelim}
-{\usebibmacro{textcite:postnote}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\AtEveryBibitem{\clearlist{language}} % https://tex.stackexchange.com/questions/401020/how-to-remove-the-language-information-in-a-bibliography
-
-
-\AtEveryBibitem{\clearfield{month}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% http://codydunne.blogspot.com/2012/01/suppressing-bibtex-fields-for-specific.html
-% https://tex.stackexchange.com/questions/187643/biblatex-how-can-i-suppress-some-fields-for-multiple-entry-types
-\AtEveryBibitem{%
-\ifentrytype{inbook}{
-    \clearname{editor}
-    \clearfield{url}%
-    \clearfield{urldate}%
-    \clearfield{review}%
-    \clearfield{series}%%
-}{}
-\ifentrytype{book}{
-    \clearname{editor}
-    \clearfield{url}%
-    \clearfield{urldate}%
-    \clearfield{review}%
-    \clearfield{series}%%
-}{}
-\ifentrytype{collection}{
-    \clearname{editor}
-    \clearfield{url}%
-    \clearfield{urldate}%
-    \clearfield{review}%
-    \clearfield{series}%%
-}{}
-\ifentrytype{incollection}{
-    \clearname{editor}
-    \clearfield{url}%
-    \clearfield{urldate}%
-    \clearfield{review}%
-    \clearfield{series}%%
-}{}
+\iffieldundef{labelyear}
+{\usebibmacro{cite:label}}
+{\usebibmacro{cite:labeldate+extradate}}%
 }
 
+\DeclareCiteCommand{\citejournal}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{journal}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+\DeclareCiteCommand{\cite}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\cite}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkbibparens]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\parencite}[\mkbibparens]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{ \usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\textcite}
+{\boolfalse{cbx:parens}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{textcite}}}
+{\ifbool{cbx:parens}
+{\bibcloseparen\global\boolfalse{cbx:parens}}
+{}%
+\multicitedelim}
+{\usebibmacro{textcite:postnote}}
+
+\DeclareCiteCommand{\textcite}
+{\boolfalse{cbx:parens}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\printnames{labelname}%
+\printtext{ (\printfield{year}\printtext{)}}}}
+{\ifbool{cbx:parens}
+{\bibcloseparen\global\boolfalse{cbx:parens}}
+{}%
+\multicitedelim}
+{\usebibmacro{textcite:postnote}}
+\AtEveryBibitem{\clearlist{language}} % https://tex.stackexchange.com/questions/401020/how-to-remove-the-language-information-in-a-bibliography
+
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryBibitem{%
+\ifentrytype{inbook}{
+\clearname{editor}
+\clearfield{url}%
+\clearfield{urldate}%
+\clearfield{review}%
+\clearfield{series}%%
+}{}
+\ifentrytype{book}{
+\clearname{editor}
+\clearfield{url}%
+\clearfield{urldate}%
+\clearfield{review}%
+\clearfield{series}%%
+}{}
+\ifentrytype{collection}{
+\clearname{editor}
+\clearfield{url}%
+\clearfield{urldate}%
+\clearfield{review}%
+\clearfield{series}%%
+}{}
+\ifentrytype{incollection}{
+\clearname{editor}
+\clearfield{url}%
+\clearfield{urldate}%
+\clearfield{review}%
+\clearfield{series}%%
+}{}
+}
 
 \addbibresource{\jobname.bib}
 
 \DeclareDelimFormat{nameyeardelim}{\addcomma\space}
 
-% \DeclareNameAlias{sortname}{family-given}
 \DeclareNameAlias{sortname}{family-given/given-family}
 
-% \renewcommand*{\labelnamepunct}{\addspace}
 \renewcommand*{\labelnamepunct}{\addcomma\space}
 
 \DeclareFieldFormat
-  [article,inbook,incollection,inproceedings,patent,thesis,unpublished]
-  {title}{#1} % remove Quotation marks for each title
-  
-\DeclareFieldFormat{titlecase}{\MakeSentenceCase*{#1}}
+[article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+{title}{#1} % remove Quotation marks for each title
 
-% \renewbibmacro*{in:}{%
-%   \ifentrytype{article}
-%     {\setunit{\addcomma\space}}
-%     {\printtext{\bibstring{in}\intitlepunct}}}
+\DeclareFieldFormat{titlecase}{\MakeSentenceCase*{#1}}
 
 \renewbibmacro*{in:}{\setunit{\addcomma\space}}
 
 \renewbibmacro*{editor}{\setunit{\addcomma\space}}
-% \renewbibmacro*{edition}{\setunit{\addcomma\space}}
 
 \DeclareFieldFormat{journaltitlecase}{#1}
 
 \renewbibmacro*{journal}{%
-  \ifboolexpr{
-    test {\iffieldundef{journaltitle}}
-    and
-    test {\iffieldundef{journalsubtitle}}
-  }
-    {}
-    {\printtext[journaltitle]{%
-       \printfield[journaltitlecase]{journaltitle}%
-       \setunit{\subtitlepunct}%
-       \printfield[journaltitlecase]{journalsubtitle}}}}
+\ifboolexpr{
+test {\iffieldundef{journaltitle}}
+and
+test {\iffieldundef{journalsubtitle}}
+}
+{}
+{\printtext[journaltitle]{%
+\printfield[journaltitlecase]{journaltitle}%
+\setunit{\subtitlepunct}%
+\printfield[journaltitlecase]{journalsubtitle}}}}
 
 \renewbibmacro*{volume+number+eid}{%
-  % \setunit*{\addcomma\space}%
-  \printfield{volume}%
-  \printfield{number}%
-  \setunit*{\addcomma\space}%
-  \printfield{eid}
+\printfield{volume}%
+\printfield{number}%
+\setunit*{\addcomma\space}%
+\printfield{eid}
 }
-
-% \DeclareFieldFormat[article,periodical]{volume}{\mkbibbold{#1}}% volume of a journal
-
-% \DeclareFieldFormat[article]{volume}{\mkbibemph{#1}}
 
 \DeclareFieldFormat[article]{number}{(#1)}
 
 \DeclareFieldFormat{pages}{#1}
 
-% https://tex.stackexchange.com/questions/12254/biblatex-how-to-remove-the-parentheses-around-the-year-in-authoryear-style/
-% \renewcommand{\bibopenparen}{\addcomma\addspace}
-% \renewcommand{\bibcloseparen}{\addcomma\addspace}
-
-% https://tex.stackexchange.com/questions/152869/show-url-only-for-one-reference
 \renewbibmacro*{url+urldate}{%
-  \ifentrytype{misc}
-    {\printfield{url}%
-     \iffieldundef{urlyear}
-       {}
-       {\setunit*{\addspace}%
-        \printurldate}}
-    {}}
+\ifentrytype{misc}
+{\printfield{url}%
+\iffieldundef{urlyear}
+{}
+{\setunit*{\addspace}%
+\printurldate}}
+{}}
 
-% https://tex.stackexchange.com/questions/19105/how-can-i-put-more-space-between-bibliography-entries-biblatex
 \setlength\bibitemsep{1.5\itemsep}
 
-
-% https://tex.stackexchange.com/questions/459022/remove-parentheses-at-year-biblatex-with-author-year/459026      
-% \renewbibmacro*{date+extrayear}{%
-%   \usebibmacro{date+extradate}
-%   }
-%   
-%%% authoryear.bbx
-
-
-% \newbibmacro*{bbx:ifmergeddate}{\iflabeldateisdate} % This line may be needed to fix an error
-
 \renewbibmacro*{date+extradate}{%
-    \iffieldundef{labelyear}
-      {}
-      {\addcomma\addspace{%
-         \iflabeldateisdate
-           {\printfield{issue}%
-            \setunit*{\addspace}%
-            \printdateextra}
-           {\printlabeldateextra}}\addcomma\addspace}}%
-  \renewbibmacro*{bbx:ifmergeddate}{\iflabeldateisdate}%
-  \renewbibmacro*{issue+date}{%
-    \usebibmacro{bbx:ifmergeddate}
-      {}
-      {\addcomma\addspace{%
-         \printfield{issue}%
-         \setunit*{\addspace}%
-         \printdate}\addcomma\addspace}}
-         
-         
-         
-% https://tex.stackexchange.com/questions/438396/regex-replacement-for-biblatex-biber-to-eliminate-the-warning-month-not-integer
+\iffieldundef{labelyear}
+{}
+{\addcomma\addspace{%
+\iflabeldateisdate
+{\printfield{issue}%
+\setunit*{\addspace}%
+\printdateextra}
+{\printlabeldateextra}}\addcomma\addspace}}%
+\renewbibmacro*{bbx:ifmergeddate}{\iflabeldateisdate}%
+\renewbibmacro*{issue+date}{%
+\usebibmacro{bbx:ifmergeddate}
+{}
+{\addcomma\addspace{%
+\printfield{issue}%
+\setunit*{\addspace}%
+\printdate}\addcomma\addspace}}
+
 \DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map[overwrite]{
-      \step[fieldsource=month, match=\regexp{\A(j|J)an\Z}, replace=1]
-      \step[fieldsource=month, match=\regexp{\A(f|F)eb\Z}, replace=2]
-      \step[fieldsource=month, match=\regexp{\A(m|M)ar\Z}, replace=3]
-      \step[fieldsource=month, match=\regexp{\A(a|A)pr\Z}, replace=4]
-      \step[fieldsource=month, match=\regexp{\A(m|M)ay\Z}, replace=5]
-      \step[fieldsource=month, match=\regexp{\A(j|J)un\Z}, replace=6]
-      \step[fieldsource=month, match=\regexp{\A(j|J)ul\Z}, replace=7]
-      \step[fieldsource=month, match=\regexp{\A(a|A)ug\Z}, replace=8]
-      \step[fieldsource=month, match=\regexp{\A(s|S)ep\Z}, replace=9]
-      \step[fieldsource=month, match=\regexp{\A(o|O)ct\Z}, replace=10]
-      \step[fieldsource=month, match=\regexp{\A(n|n)ov\Z}, replace=11]
-      \step[fieldsource=month, match=\regexp{\A(d|D)ec\Z}, replace=12]
-    }
-  }
+\maps[datatype=bibtex]{
+\map[overwrite]{
+\step[fieldsource=month, match=\regexp{\A(j|J)an\Z}, replace=1]
+\step[fieldsource=month, match=\regexp{\A(f|F)eb\Z}, replace=2]
+\step[fieldsource=month, match=\regexp{\A(m|M)ar\Z}, replace=3]
+\step[fieldsource=month, match=\regexp{\A(a|A)pr\Z}, replace=4]
+\step[fieldsource=month, match=\regexp{\A(m|M)ay\Z}, replace=5]
+\step[fieldsource=month, match=\regexp{\A(j|J)un\Z}, replace=6]
+\step[fieldsource=month, match=\regexp{\A(j|J)ul\Z}, replace=7]
+\step[fieldsource=month, match=\regexp{\A(a|A)ug\Z}, replace=8]
+\step[fieldsource=month, match=\regexp{\A(s|S)ep\Z}, replace=9]
+\step[fieldsource=month, match=\regexp{\A(o|O)ct\Z}, replace=10]
+\step[fieldsource=month, match=\regexp{\A(n|n)ov\Z}, replace=11]
+\step[fieldsource=month, match=\regexp{\A(d|D)ec\Z}, replace=12]
 }
-         
-         
-% \newcommand{\citebracket}[1]{\parencite{#1}}
+}
+}
 
-% \newcommand{\citebracket}[1]{(\cite{#1})}
-
-
-% \DeclareSourcemap{
-%   \maps[datatype=bibtex]{
-%     \map[overwrite]{
-%       \step[fieldsource=title, match=\regexp{.*?}, replace=},questionmark={?}]
-%     }
-%   }
-% }
-
-
-
-% 
-% \renewbibmacro*{author}{%
-%   \ifboolexpr{
-%     test \ifuseauthor
-%     and
-%     not test {\ifnameundef{author}}
-%   }
-%     {\usebibmacro{bbx:dashcheck}
-%        {\bibnamedash}
-%        {\usebibmacro{bbx:savehash}%
-%         \printnames{author}%
-%         \iffieldundef{authortype}
-%           {\setunit{\printdelim{nameyeardelim}}}
-%           {\setunit{\printdelim{authortypedelim}}}}%
-%      \iffieldundef{authortype}
-%        {}
-%        {\usebibmacro{authorstrg}%
-%         \setunit{\printdelim{nameyeardelim}}}}%
-%     {\global\undef\bbx@lasthash
-%      \usebibmacro{labeltitle}%
-%      \setunit*{\printdelim{nonameyeardelim}}}%
-%   \usebibmacro{date+extradate}}
-%   
-  
-  
-
-% biblatex.pdf
-% 4.7.5 Configuring Punctuation and Capitalization
-% \DeclarePunctuationPairs{comma}{*!}
 \DeclarePunctuationPairs{comma}{*}

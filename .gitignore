@@ -1,0 +1,22 @@
+# LaTeX
+*.log
+*.out
+*.bbl
+*.aux
+*.asv
+*.bcf
+*.xml
+*.gz
+*.nav
+*.toc
+*.sav
+*.ttt
+*.fff
+
+# MATLAB
+*.asv
+*.mat
+
+# Data
+*.csv
+*.xlsx

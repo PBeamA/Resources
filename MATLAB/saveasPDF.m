@@ -17,6 +17,7 @@ set(gca, 'LooseInset', get(gca, 'TightInset'));
 
 print(fig, filename, '-dpdf', '-bestfit', '-painters')
 
+% Also save a PNG
 print(fig, regexprep(filename, '.pdf', '.png'), '-dpng', '-r600')
 
 end

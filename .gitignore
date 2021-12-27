@@ -1,17 +1,29 @@
+# Figures
+*.eps
+*.png
+*.jpg
+
 # LaTeX
-*.log
-*.out
-*.bbl
-*.aux
 *.asv
+*.aux
+*.bak
+*.bbl
 *.bcf
+*.blg
+*.log
+*.lof
+*.lot
+*.nav
+*.out
 *.xml
 *.gz
 *.nav
-*.toc
 *.sav
+*.snm
+*.toc
 *.ttt
 *.fff
+*.xtr
 
 # MATLAB
 *.asv

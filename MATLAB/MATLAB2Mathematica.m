@@ -1,9 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % MATLAB2Mathematica.m
 %
-% Beam.Aschakulporn@otago.ac.nz
+% Pakorn.Aschakulporn@otago.ac.nz
 % https://pbeama.github.io/
-% Modified: Friday 24 December 2021 (19:13)
+% Modified: Thursday 28 July 2022 (13:19)
 % * Comments removed.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function str = MATLAB2Mathematica(STR)

@@ -1,0 +1,826 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PaperTemplate
+%
+% Pakorn.Aschakulporn@otago.ac.nz
+% https://pbeama.github.io/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt, a4paper, oneside]{article}
+
+\title{$<$TITLE$>$}
+\author{Author}
+
+\newcommand{\Thanks}{
+ACKNOWLEDGEMENTS}
+\newcommand{\CorAuthor}{Corresponding author. Tel: +64 XX XXX XXXX.}
+\newcommand{\email}{EMAIL@otago.ac.nz}
+\newcommand{\FirstVersion}{1 January 2020}
+\newcommand{\ThisVersion}{\today}
+\newcommand{\Keywords}{$<$Keywords$>$}
+\newcommand{\JELCode}{$<$JELCode$>$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\let\title\@title
+\let\author\@author
+\makeatother
+
+\makeatletter
+\def\today{%
+  \the\day~%
+  \ifcase\month\or%
+  January\or February\or March\or April\or May\or June\or%
+  July\or August\or September\or October\or November\or December\fi~%
+  \number\year%
+}
+\makeatother
+
+
+\usepackage[mathlines]{lineno}
+\linenumbers
+
+% https://tex.stackexchange.com/questions/25784/why-doesnt-lineno-number-a-paragraph-when-it-is-followed-by-an-indented-equatio
+\let\oldequation\equation
+\let\oldendequation\endequation
+
+\renewenvironment{equation}
+  {\linenomathNonumbers\oldequation}
+  {\oldendequation\endlinenomath}
+
+% https://tex.stackexchange.com/questions/461186/how-to-use-lineno-with-amsmath-align
+\usepackage[mathlines]{lineno} %% <- with [mathlines] to number lines in equations
+\usepackage{amsmath}           %% <- after lineno
+\usepackage{etoolbox}          %% <- for \cspreto, \csappto and \patchcmd
+
+%% Patch 'normal' math environments:
+\newcommand*\linenomathpatch[1]{%
+  \cspreto{#1}{\linenomath}%
+  \cspreto{#1*}{\linenomath}%
+  \csappto{end#1}{\endlinenomath}%
+  \csappto{end#1*}{\endlinenomath}%
+}
+%% Patch AMS math environments:
+\newcommand*\linenomathpatchAMS[1]{%
+  \cspreto{#1}{\linenomathAMS}%
+  \cspreto{#1*}{\linenomathAMS}%
+  \csappto{end#1}{\endlinenomath}%
+  \csappto{end#1*}{\endlinenomath}%
+}
+
+%% Definition of \linenomathAMS depends on whether the mathlines option is provided
+\expandafter\ifx\linenomath\linenomathWithnumbers
+  \let\linenomathAMS\linenomathWithnumbers
+  %% The following line gets rid of an extra line numbers at the bottom:
+  \patchcmd\linenomathAMS{\advance\postdisplaypenalty\linenopenalty}{}{}{}
+\else
+  \let\linenomathAMS\linenomathNonumbers
+\fi
+
+\linenomathpatch{equation}
+\linenomathpatchAMS{gather}
+\linenomathpatchAMS{multline}
+\linenomathpatchAMS{align}
+\linenomathpatchAMS{alignat}
+\linenomathpatchAMS{flalign}
+
+% Disable line numbering during measurement step of multline
+\makeatletter
+\patchcmd{\mmeasure@}{\measuring@true}{
+  \measuring@true
+  \ifnum-\linenopenaltypar>\interdisplaylinepenalty
+    \advance\interdisplaylinepenalty-\linenopenalty
+  \fi
+  }{}{}
+\makeatother
+
+%\iffalse
+\iftrue
+\linenumbers
+\else
+\renewcommand{\linelabel}[1]{}
+\fi
+
+\usepackage{lmodern}
+
+\usepackage{amsfonts, amsmath, amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{bm}
+
+\usepackage[nodisplayskipstretch]{setspace}
+\onehalfspacing
+
+\usepackage{fancyref}
+\usepackage[labelfont = bf]{caption}
+\usepackage{subcaption}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+%%%%% Plain
+\fancypagestyle{plain}{
+\fancyhead[R]{\thepage}
+\lhead{}
+\renewcommand{\headrulewidth}{0.0pt}
+}
+% \pagestyle{plain}
+%%%%% Fancy
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\title}
+\rhead{\thepage}
+
+\fancyheadoffset{0cm}
+\setlength{\headheight}{15pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\fancypagestyle{mainmatter}{%
+\pagestyle{fancy}
+
+\lhead{\title}
+\rhead{\thepage}
+
+\fancyheadoffset{0cm}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0.4pt}
+}
+
+
+\usepackage[bottom]{footmisc}
+
+\newcommand{\footsym}[1]{\renewcommand{\thefootnote}{\fnsymbol{footnote}}\footnote{#1}\renewcommand{\thefootnote}{\arabic{footnote}}}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,
+            pdftex,
+            bookmarksnumbered = true,
+            bookmarksopen = false,
+            bookmarksopen = true,
+            bookmarksopenlevel = 2,
+            pdfpagelabels = true,
+            ]{hyperref}
+\hypersetup{pdfauthor = {\author},
+            pdftitle = {\title},
+            pdfsubject = {},
+            pdfkeywords = {},
+            pdfproducer = {LaTeX with hyperref},
+            pdfcreator = {pdfLaTeX}
+            }
+
+\newcommand{\hypref}[1]{\hyperref[#1]{\Cref*{#1}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{footnotebackref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{attachfile}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[noabbrev]{cleveref}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{References}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[nomarkers, nolists, tablesfirst, heads]{endfloat}
+
+\renewcommand{\efloatseparator}{\vfill} % individual fig/table per page
+
+\renewcommand\floatplace[1]{%
+\begin{center}
+[Insert \csname #1name\endcsname~%
+\csname thepost#1\endcsname\ about here.]
+\end{center}
+}
+
+\newcommand{\InsertHere}[1]{
+\begin{center}
+[Insert \Cref{#1} about here.]
+\end{center}
+}
+
+\AtBeginTables{\addcontentsline{toc}{section}{Tables}}
+\AtBeginFigures{\addcontentsline{toc}{section}{Figures}}
+
+\AtBeginTables{\mbox{}}
+\AtBeginFigures{\mbox{}}
+
+% \AtBeginDelayedFloats{\mbox{}}
+\usepackage{rotating}
+\DeclareDelayedFloatFlavor{sidewaystable}{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\topmargin}{0cm}
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{23cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% https://tex.stackexchange.com/questions/345263/latex-article-frontmatter
+\makeatletter
+
+\newcommand\frontmatter{%
+    % \cleardoublepage
+  %\@mainmatterfalse
+  \pagenumbering{roman}
+  \setcounter{page}{0}
+  \pagestyle{plain}
+  \onehalfspacing
+  }
+
+\newcommand\mainmatter{%
+    % \cleardoublepage
+ % \@mainmattertrue
+  \pagenumbering{arabic}
+  \pagestyle{mainmatter}
+  \setcounter{footnote}{0}
+  % \onehalfspacing
+    \doublespacing
+  }
+
+\newcommand\backmatter{%
+  \onehalfspacing
+   }
+
+%\newcommand\preappendix{%
+%    \raggedbottom
+%    \pagebreak
+%%	\appendix
+%
+%%\setcounter{subsection}{0}
+%	%
+%
+%\renewcommand{\thepostfigure}{\Alph{subsection}.\arabic{postfigure}}%
+%\setcounter{postfigure}{0}%
+%\efloat@iwrite{fff}{%
+%  \unexpanded{\unexpanded{%
+%    \renewcommand{\thefigure}{\Alph{subsection}.\arabic{figure}}%
+%    \setcounter{figure}{0}%
+%  }}%
+%}%
+%
+%\renewcommand{\theposttable}{\Alph{subsection}.\arabic{posttable}}%
+%\setcounter{posttable}{0}%
+%\efloat@iwrite{ttt}{%
+%  \unexpanded{\unexpanded{%
+%    \renewcommand{\thetable}{\Alph{subsection}.\Roman{table}}%
+%    \setcounter{table}{0}%
+%  }}%
+%}%
+%
+%
+%
+%
+%%%%%%% https://tex.stackexchange.com/questions/253281/numbering-appendix-tables-with-endfloat
+%%\preto{\subsection}{%
+%%
+%%\renewcommand{\thepostfigure}{\Alph{subsection}.\arabic{postfigure}}%
+%%\setcounter{postfigure}{0}%
+%%\efloat@iwrite{fff}{%
+%%  \unexpanded{\unexpanded{%
+%%    \renewcommand{\thefigure}{\Alph{subsection}.\arabic{figure}}%
+%%    \setcounter{figure}{0}%
+%%  }}%
+%%}%
+%%
+%%\renewcommand{\theposttable}{\Alph{subsection}.\arabic{posttable}}%
+%%\setcounter{posttable}{0}%
+%%\efloat@iwrite{ttt}{%
+%%  \unexpanded{\unexpanded{%
+%%    \renewcommand{\thetable}{\Alph{subsection}.\Roman{table}}%
+%%    \setcounter{table}{0}%
+%%  }}%
+%%}%
+%
+%%\makeatletter
+%%%  \renewcommand{\thepostfigure}{\Alph{subsection}.\arabic{postfigure}}%
+%%%  \efloat@iwrite{fff}{%
+%%%    \unexpanded{%
+%%%      \stepcounter{subsection}%
+%%%      \renewcommand{\thefigure}{\Alph{subsection}.\arabic{figure}}%
+%%%      \setcounter{figure}{0}%
+%%%    }%
+%%%  }%
+%%%  \renewcommand{\theposttable}{\Alph{subsection}.\arabic{posttable}}%
+%%%  \efloat@iwrite{ttt}{%
+%%%    \unexpanded{%
+%%%      \stepcounter{subsection}%
+%%%      \renewcommand{\thetable}{\Alph{subsection}.\arabic{table}}%
+%%%      \setcounter{table}{0}%
+%%%    }%
+%%%  }%
+%%\setcounter{posttable}{0}
+%%\setcounter{postfigure}{0}
+%%
+%%%	\renewcommand{\thefigure}{\Alph{subsection}.\arabic{figure}}
+%%%	\setcounter{figure}{0}
+%%%	\renewcommand{\thetable}{\Alph{subsection}.\arabic{table}}
+%%%	\setcounter{table}{0}
+%%\makeatother
+%%
+%%preto
+%%
+%%sadasd
+%%\begin{equation}
+%%y = x^2
+%%\end{equation}
+%%}
+%
+%%\protected@eappto{\subsection}{%
+%%\makeatletter
+%%appto
+%%\makeatother
+%%}
+%
+%
+%%	\renewcommand{\thefigure}{\Alph{subsection}.\arabic{figure}}
+%%	\setcounter{figure}{0}
+%%	\renewcommand{\thetable}{\Alph{subsection}.\arabic{table}}
+%%	\setcounter{table}{0}
+%	\renewcommand{\theequation}{\Alph{subsection}.\arabic{equation}}
+%	\setcounter{equation}{0}
+%
+%	\counterwithin{figure}{subsection}
+%	\counterwithin{table}{subsection}
+%	\counterwithin{equation}{subsection}
+%	\singlespacing
+%	\renewcommand{\thesubsection}{\Alph{subsection}}
+%	\section*{Appendix}\label{sec:Appendix}\addcontentsline{toc}{section}{Appendix}\appendix
+%}
+
+
+\newcommand\preappendix{%
+    \raggedbottom
+    \pagebreak
+%	\appendix
+
+%\setcounter{subsection}{0}
+	%
+
+\renewcommand{\thepostfigure}{\Alph{subsection}.\arabic{postfigure}}%
+\setcounter{postfigure}{0}%
+\efloat@iwrite{fff}{%
+  \unexpanded{\unexpanded{%
+    \renewcommand{\thefigure}{\Alph{subsection}.\arabic{figure}}%
+    \setcounter{figure}{0}%
+  }}%
+}%
+
+\renewcommand{\theposttable}{\Alph{subsection}.\arabic{posttable}}%
+\setcounter{posttable}{0}%
+\efloat@iwrite{ttt}{%
+  \unexpanded{\unexpanded{%
+    \renewcommand{\thetable}{\Alph{subsection}.\Roman{table}}%
+    \setcounter{table}{0}%
+  }}%
+}%
+
+
+	\renewcommand{\theequation}{\Alph{subsection}.\arabic{equation}}
+	\setcounter{equation}{0}
+
+	\counterwithin{figure}{subsection}
+	\counterwithin{table}{subsection}
+	\counterwithin{equation}{subsection}
+	\singlespacing
+	\renewcommand{\thesubsection}{\Alph{subsection}}
+	\section*{Appendix}\label{sec:Appendix}\addcontentsline{toc}{section}{Appendix}\appendix
+}
+
+%\newcommand\preappendix{%
+%
+%    \renewcommand{\theequation}{\Alph{subsection}.\arabic{equation}}
+%    \setcounter{equation}{0}
+%
+%
+%\renewcommand{\thepostfigure}{\Alph{subsection}.\arabic{postfigure}}%
+%\setcounter{postfigure}{0}%
+%\efloat@iwrite{fff}{%
+%  \unexpanded{\unexpanded{%
+%    \renewcommand{\thefigure}{\Alph{subsection}.\arabic{figure}}%
+%    \setcounter{figure}{0}%
+%  }}%
+%}%
+%
+%\renewcommand{\theposttable}{\Alph{subsection}.\arabic{posttable}}%
+%\setcounter{posttable}{0}%
+%\efloat@iwrite{ttt}{%
+%  \unexpanded{\unexpanded{%
+%    \renewcommand{\thetable}{\Alph{subsection}.\Roman{table}}%
+%    \setcounter{table}{0}%
+%  }}%
+%}%
+%
+%
+%\counterwithin{equation}{subsection}
+%\counterwithin{figure}{subsection}
+%\counterwithin{table}{subsection}
+%
+%
+%}
+
+\newcommand\postappendix{%
+	\renewcommand{\thefigure}{\arabic{figure}}
+	\setcounter{figure}{0}
+	\renewcommand{\thetable}{\Roman{table}}
+	\setcounter{table}{0}
+	\renewcommand{\theequation}{\arabic{equation}}
+	\setcounter{equation}{0}
+}
+
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\frontmatter
+\thispdfpagelabel{Title}
+\pdfbookmark[1]{Title}{title}
+\begin{center}
+\Large
+\textbf{\title\footsym{\Thanks}} \\
+\vspace{0.9cm}
+\normalsize
+\author\footsym{\CorAuthor} \\
+Department of Accountancy and Finance \\
+\vspace{-0.25em}
+Otago Business School, University of Otago \\
+\vspace{-0.25em}
+Dunedin 9054, New Zealand \\
+\vspace{-0.25em}
+\email \\
+\vspace{0.4cm}
+Pakorn Aschakulporn \\
+Department of Accountancy and Finance \\
+\vspace{-0.25em}
+Otago Business School, University of Otago \\
+\vspace{-0.25em}
+Dunedin 9054, New Zealand \\
+\vspace{-0.25em}
+pakorn.aschakulporn@otago.ac.nz \\
+\vspace{0.4cm}
+Jin E. Zhang \\
+Department of Accountancy and Finance \\
+\vspace{-0.25em}
+Otago Business School, University of Otago \\
+\vspace{-0.25em}
+Dunedin 9054, New Zealand \\
+\vspace{-0.25em}
+jin.zhang@otago.ac.nz \\
+\vspace{0.9cm}
+First Version: \FirstVersion \\
+This Version: \ThisVersion \\
+\vspace{0.9cm}
+\end{center}
+\begin{flushleft}
+\textit{Keywords:}\quad \Keywords
+
+\textit{JEL Classification Code:}\quad \JELCode
+\end{flushleft}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\raggedbottom
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\Large
+\textbf{\title} \\
+\vspace{0.4cm}
+\normalsize
+\vspace{0.4cm}
+\vspace{0.5cm}
+\textbf{Abstract}
+\end{center}
+ABSTRACT
+\vspace{0.5cm}
+\begin{flushleft}
+\textit{Keywords:}\quad \Keywords
+
+\textit{JEL Classification Code:}\quad \JELCode
+\end{flushleft}
+\raggedbottom
+\pagebreak
+
+\mainmatter
+\section{Introduction}\label{sec:Introduction}
+\emph{The code used to generate this document is attached with in the pdf. It was compiled using MiKTeX and ``biber'' was used to deal with the references.}
+\vspace{1em}
+\hrule
+\vspace{1em}
+\noindent\emph{First Paragraph}
+
+First paragraph's sentences
+\begin{enumerate}
+\item What we're doing
+\item Why it's important
+\item Critique previous research
+\item What we do to compete
+\end{enumerate}
+\vspace{1em}
+\hrule
+\vspace{1em}
+\noindent\emph{Literature Review}
+\vspace{1em}
+\hrule
+\vspace{1em}%
+\noindent\emph{Critique Key Papers}
+\vspace{1em}
+\hrule
+\vspace{1em}%
+\noindent\emph{Our Contribution}
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+The remainder of this paper is organized as follows.
+
+\hypref{sec:Methodology}
+
+\hypref{sec:Data}
+
+\hypref{sec:Results}
+
+\hypref{sec:Conclusion}
+
+\hyperref[sec:Appendix]{Appendix}
+
+
+\section{Methodology}\label{sec:Methodology}
+
+\subsection{References}
+
+The original/built-in way:
+\begin{verbatim}
+\textcite{10.1002/fut.22280}
+\end{verbatim}
+\textcite{10.1002/fut.22280}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\begin{verbatim}
+\citeauthoryear{10.1007/s11147-022-09187-x}
+\end{verbatim}
+\citeauthoryear{10.1007/s11147-022-09187-x}
+
+\begin{verbatim}
+\citeauthoryear{10.1002/fut.22280}
+\end{verbatim}
+\citeauthoryear{10.1002/fut.22280}
+
+
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\begin{verbatim}
+\citeauthorsyear{10.1002/fut.22280}
+\end{verbatim}
+\citeauthorsyear{10.1002/fut.22280}
+
+
+
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\begin{verbatim}
+\parencite{10.1002/fut.22280}
+\end{verbatim}
+\parencite{10.1002/fut.22280}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\begin{verbatim}
+\citeauthor{10.1002/fut.22280}
+\end{verbatim}
+\citeauthor{10.1002/fut.22280}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\begin{verbatim}
+\citeyear{10.1002/fut.22280}
+\end{verbatim}
+\citeyear{10.1002/fut.22280}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\begin{verbatim}
+\citeauthoryear{10.1080/14697680601173444,10.1111/acfi.12660,10.1002/fut.22280}
+\end{verbatim}
+\citeauthoryear{10.1080/14697680601173444,10.1111/acfi.12660,10.1002/fut.22280}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\begin{verbatim}
+\textcite{10.1080/14697680601173444,10.1111/acfi.12660,10.1002/fut.22280}
+\end{verbatim}
+\textcite{10.1080/14697680601173444,10.1111/acfi.12660,10.1002/fut.22280}
+
+\subsection{Math}
+Numbered equation
+\begin{equation}\label{eq:Black-Scholes Formula}
+c = S_t e^{-\delta \tau} N\left( d_1 \right) - K e^{-r \tau} N\left( d_2 \right)
+\end{equation}
+Referencing to a numbered equation: \hypref{eq:Black-Scholes Formula}.
+
+
+Not numbered
+\begin{equation*}
+\Delta = \frac{\partial c_t}{S_t} = e^{-\delta \tau} N\left( d_1 \right)
+\end{equation*}
+
+
+Align equations
+\begin{align}
+d_1 &= \frac{\ln\left( \frac{S_t}{K} \right) + \left( r - \delta + \frac{1}{2} \sigma^2 \right) \tau}{\sigma\sqrt{\tau}} \\
+d_2 &= \frac{\ln\left( \frac{S_t}{K} \right) + \left( r - \delta - \frac{1}{2} \sigma^2 \right) \tau}{\sigma\sqrt{\tau}}
+\end{align}
+
+Aligned without numbers
+\begin{align*}
+n(x) &= \frac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}} \\
+N(x) &= \int_{-\infty}^{x}{n(y) dy}
+\end{align*}
+
+
+Aligned with and without numbers
+\begin{align}
+d_2 &= d_1 - \sigma\sqrt{\tau} \\
+\frac{\partial d_1}{\partial S_t} &= \frac{\partial d_2}{\partial S_t} \nonumber
+\end{align}
+
+Inline maths $N(x) = \int_{-\infty}^{x}{\frac{1}{\sqrt{2 \pi}} e^{-\frac{y^2}{2}} dy}$ vs $\displaystyle N(x) = \int_{-\infty}^{x}{\frac{1}{\sqrt{2 \pi}} e^{-\frac{y^2}{2}} dy}$
+
+
+Some bracket stuff
+\[
+\{[\ln(\frac{S_t}{K})]^2\} \ \mbox{vs} \ \left\{ \left[ \ln\left( \frac{S_t}{K} \right) \right]^2 \right\}
+\]
+
+\section{Data}\label{sec:Data}
+
+\InsertHere{tab:Descriptive Statistics}
+\begin{table}[ht!]
+\caption[Descriptive Statistics.]{\textbf{Descriptive Statistics.} \\
+Details
+\label{tab:Descriptive Statistics}
+}
+\centering
+\begin{tabular}{|l||c|c|c|c|}
+\hline
+\textbf{Variable} & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Max} & \textbf{Min} \\
+\hline
+\hline
+Variable 1 & 1 & 0 & 1 & 1 \\
+Variable 2 & 2 & 0 & 2 & 2 \\
+Variable 3 & 3 & 0 & 3 & 3 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\InsertHere{tab:Figure A}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width = 0.75\textwidth, keepaspectratio]{example-image-a}
+\caption[Figure A.]{\textbf{Figure A.} \\
+Details
+\label{tab:Figure A}
+}
+\end{figure}
+
+
+
+\InsertHere{tab:Figure B}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width = 0.75\textwidth, keepaspectratio]{example-image-b}
+\caption[Figure B.]{\textbf{Figure B.} \\
+Details
+\label{tab:Figure B}
+}
+\end{figure}
+
+\section{Results}\label{sec:Results}
+
+
+\section{Conclusion}\label{sec:Conclusion}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\backmatter
+\raggedbottom
+\pagebreak
+\onehalfspacing
+\printbibliography[heading=bibintoc,title={References}]
+
+\preappendix
+% \input{Appendix}
+%% \include{Appendix}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{APPENDIX A}\label{sec:APPENDIX A}
+
+
+\begin{equation}
+y = mx + c
+\end{equation}
+
+\hypref{tab:Blah}
+
+
+\InsertHere{tab:Blah}
+\begin{table}[ht!]
+\caption[Blah.]{\textbf{Blah.} \\
+Details
+\label{tab:Blah}
+}
+\centering
+\begin{tabular}{|l||c|c|c|c|}
+\hline
+\textbf{Variable} & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Max} & \textbf{Min} \\
+\hline
+\hline
+Variable 1 & 1 & 0 & 1 & 1 \\
+Variable 2 & 2 & 0 & 2 & 2 \\
+Variable 3 & 3 & 0 & 3 & 3 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{APPENDIX B}\label{sec:APPENDIX B}
+
+\begin{equation}
+y = mx + c
+\end{equation}
+
+\InsertHere{tab:BlahB}
+\begin{table}[ht!]
+\caption[BlahB.]{\textbf{BlahB.} \\
+Details
+\label{tab:BlahB}
+}
+\centering
+\begin{tabular}{|l||c|c|c|c|}
+\hline
+\textbf{Variable} & \textbf{Mean} & \textbf{Std. Dev.} & \textbf{Max} & \textbf{Min} \\
+\hline
+\hline
+Variable 1 & 1 & 0 & 1 & 1 \\
+Variable 2 & 2 & 0 & 2 & 2 \\
+Variable 3 & 3 & 0 & 3 & 3 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\subsection{APPENDIX C}
+
+\InsertHere{tab:Figure C}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width = 0.75\textwidth, keepaspectratio]{example-image-c}
+\caption[Figure C.]{\textbf{Figure C.} \\
+Details
+\label{tab:Figure C}
+}
+\end{figure}
+
+
+\subsection{APPENDIX D}
+\begin{equation}
+y = mx + c
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\postappendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textattachfile{\jobname.tex}{}
+\textattachfile{\jobname.bib}{}
+\textattachfile{References.tex}{}
+\end{document}

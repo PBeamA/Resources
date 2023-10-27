@@ -1,0 +1,300 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% References.tex
+%
+% Pakorn.Aschakulporn@otago.ac.nz
+% https://pbeama.github.io/
+% Modified: Friday 24 December 2021 (19:03)
+% * Comments removed.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+backend = biber,
+style = authoryear,
+sorting = nyt,
+giveninits = false,
+uniquelist = false,
+uniquename = false,
+isbn = false, 
+maxcitenames = 3,
+dashed = false,
+maxbibnames = 999,
+citestyle = authoryear,
+doi = false,
+eprint = false,
+natbib = true,
+hyperref = true,
+citetracker = true, % http://www.stackprinter.com/export?service=tex.stackexchange&question=48846&printer=false&linktohome=true
+]{biblatex}
+
+\renewcommand*{\revsdnamedelim}{\addcomma\space} % JF has ", and" for papers with two authors
+
+\newbibmacro*{citeauthoryear}{%
+\ifciteseen
+{\iffieldundef{shorthand}{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+{\usebibmacro{cite:label}%
+\setunit{\printdelim{nonameyeardelim}}}
+{\printnames{labelname}~%
+}% \setunit{\printdelim{nameyeardelim}}}%
+\bibopenparen\usebibmacro{cite:labeldate+extradate}\bibcloseparen}{\usebibmacro{cite:shorthand}}}
+{{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+{\usebibmacro{cite:label}%
+\setunit{\printdelim{nonameyeardelim}}}
+{\printnames{labelname}~%
+}% \setunit{\printdelim{nameyeardelim}}}%
+\bibopenparen\usebibmacro{cite:labeldate+extradate}\bibcloseparen}}%
+}%{\usebibmacro{cite:shorthand}}}
+
+\newbibmacro*{citeauthoryearFull}{%
+\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+{\usebibmacro{cite:label}%
+\setunit{\printdelim{nonameyeardelim}}}
+{\printnames{labelname}~%
+}% \setunit{\printdelim{nameyeardelim}}}%
+\bibopenparen\usebibmacro{cite:labeldate+extradate}\bibcloseparen}
+
+\DeclareCiteCommand{\citeauthoryear}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{citeauthoryear}}}
+{\iflastcitekey
+{\addcomma\addspace\bibstring{and}}
+{\addcomma}%
+\space}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\citeauthoryear}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{citeauthoryearFull}}}
+{\iflastcitekey
+{\addcomma\addspace\bibstring{and}}
+{\addcomma}%
+\space}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citeauthorsyear}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\printnames{labelname}'s~(\usebibmacro{citeyear})}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citeauthorssyear}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\printnames{labelname}'~(\usebibmacro{citeyear})}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\renewbibmacro*{citeyear}{%
+\iffieldundef{labelyear}
+{\usebibmacro{cite:label}}
+{\usebibmacro{cite:labeldate+extradate}}%
+}
+
+\DeclareCiteCommand{\citejournal}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{journal}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+\DeclareCiteCommand{\cite}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\cite}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citeyear}
+{\usebibmacro{prenote}}
+{\printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\citeyear}
+{\usebibmacro{prenote}}
+{\printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkbibparens]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\parencite}[\mkbibparens]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{ \usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\textcite}
+{\boolfalse{cbx:parens}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\usebibmacro{textcite}}}
+{\ifbool{cbx:parens}
+{\bibcloseparen\global\boolfalse{cbx:parens}}
+{}%
+\multicitedelim}
+{\usebibmacro{textcite:postnote}}
+
+\DeclareCiteCommand{\textcite}
+{\boolfalse{cbx:parens}}
+{\usebibmacro{citeindex}%
+\printtext[bibhyperref]{\printnames{labelname}%
+\printtext{ (\printfield{year}\printtext{)}}}}
+{\ifbool{cbx:parens}
+{\bibcloseparen\global\boolfalse{cbx:parens}}
+{}%
+\multicitedelim}
+{\usebibmacro{textcite:postnote}}
+\AtEveryBibitem{\clearlist{language}} % https://tex.stackexchange.com/questions/401020/how-to-remove-the-language-information-in-a-bibliography
+
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryBibitem{%
+\ifentrytype{inbook}{
+\clearname{editor}
+\clearfield{url}%
+\clearfield{urldate}%
+\clearfield{review}%
+\clearfield{series}%%
+}{}
+\ifentrytype{book}{
+\clearname{editor}
+\clearfield{url}%
+\clearfield{urldate}%
+\clearfield{review}%
+\clearfield{series}%%
+}{}
+\ifentrytype{collection}{
+\clearname{editor}
+\clearfield{url}%
+\clearfield{urldate}%
+\clearfield{review}%
+\clearfield{series}%%
+}{}
+\ifentrytype{incollection}{
+\clearname{editor}
+\clearfield{url}%
+\clearfield{urldate}%
+\clearfield{review}%
+\clearfield{series}%%
+}{}
+}
+
+\addbibresource{\jobname.bib}
+
+\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
+
+\DeclareNameAlias{sortname}{family-given/given-family}
+
+\renewcommand*{\labelnamepunct}{\addcomma\space}
+
+\DeclareFieldFormat
+[article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+{title}{#1} % remove Quotation marks for each title
+
+\DeclareFieldFormat{titlecase}{\MakeSentenceCase*{#1}}
+
+\renewbibmacro*{in:}{\setunit{\addcomma\space}}
+
+\renewbibmacro*{editor}{\setunit{\addcomma\space}}
+
+\DeclareFieldFormat{journaltitlecase}{#1}
+
+\renewbibmacro*{journal}{%
+\ifboolexpr{
+test {\iffieldundef{journaltitle}}
+and
+test {\iffieldundef{journalsubtitle}}
+}
+{}
+{\printtext[journaltitle]{%
+\printfield[journaltitlecase]{journaltitle}%
+\setunit{\subtitlepunct}%
+\printfield[journaltitlecase]{journalsubtitle}}}}
+
+\renewbibmacro*{volume+number+eid}{%
+\printfield{volume}%
+\printfield{number}%
+\setunit*{\addcomma\space}%
+\printfield{eid}
+}
+
+\DeclareFieldFormat[article]{number}{(#1)}
+
+\DeclareFieldFormat{pages}{#1}
+
+\renewbibmacro*{url+urldate}{%
+\ifentrytype{misc}
+{\printfield{url}%
+\iffieldundef{urlyear}
+{}
+{\setunit*{\addspace}%
+\printurldate}}
+{}}
+
+\setlength\bibitemsep{1.5\itemsep}
+
+\renewbibmacro*{date+extradate}{%
+\iffieldundef{labelyear}
+{}
+{\addcomma\addspace{%
+\iflabeldateisdate
+{\printfield{issue}%
+\setunit*{\addspace}%
+\printdateextra}
+{\printlabeldateextra}}\addcomma\addspace}}%
+\renewbibmacro*{bbx:ifmergeddate}{\iflabeldateisdate}%
+\renewbibmacro*{issue+date}{%
+\usebibmacro{bbx:ifmergeddate}
+{}
+{\addcomma\addspace{%
+\printfield{issue}%
+\setunit*{\addspace}%
+\printdate}\addcomma\addspace}}
+
+\DeclareSourcemap{
+\maps[datatype=bibtex]{
+\map[overwrite]{
+\step[fieldsource=month, match=\regexp{\A(j|J)an\Z}, replace=1]
+\step[fieldsource=month, match=\regexp{\A(f|F)eb\Z}, replace=2]
+\step[fieldsource=month, match=\regexp{\A(m|M)ar\Z}, replace=3]
+\step[fieldsource=month, match=\regexp{\A(a|A)pr\Z}, replace=4]
+\step[fieldsource=month, match=\regexp{\A(m|M)ay\Z}, replace=5]
+\step[fieldsource=month, match=\regexp{\A(j|J)un\Z}, replace=6]
+\step[fieldsource=month, match=\regexp{\A(j|J)ul\Z}, replace=7]
+\step[fieldsource=month, match=\regexp{\A(a|A)ug\Z}, replace=8]
+\step[fieldsource=month, match=\regexp{\A(s|S)ep\Z}, replace=9]
+\step[fieldsource=month, match=\regexp{\A(o|O)ct\Z}, replace=10]
+\step[fieldsource=month, match=\regexp{\A(n|n)ov\Z}, replace=11]
+\step[fieldsource=month, match=\regexp{\A(d|D)ec\Z}, replace=12]
+}
+}
+}
+
+\DeclarePunctuationPairs{comma}{*}

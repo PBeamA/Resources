@@ -1,6 +1,6 @@
 Formatting Checklist:
 - [ ] References
-  - [ ] Remove the ''The'' in front of journal titles
+  - [ ] Remove the ''The'' in front of journal titles.
   - [ ] Journals title capitalisation
   - [ ] Author names with special characters
   - [ ] Page/Volume numbers or Forthcoming?
@@ -10,13 +10,13 @@ Formatting Checklist:
   - [ ] All referenced must be cited at least once within the text. All citations must be included in the reference.
 - [ ] Text
   - [ ] Acronyms must be defined before use. After they are defined, they must be used.
-  - [ ] Oxford comma -- optional but needs to be consistent
+  - [ ] Oxford comma -- optional but needs to be consistent.
   - [ ] Footnotes should not be placed before punctuation. They must come after.
   - [ ] Check spacing before/after footnotes and other punctuation/symbols.
   - [ ] No contractions.
   - [ ] Avoid ampersands (&) 
   - [ ] (Optional) no personal pronouns.
-  - [ ] Variables/maths in text should be writtin in math mode.
+  - [ ] Variables/maths in text should be written in math mode.
   - [ ] Dates should be written out consistently. Usually as D MMM YYYY, although MMM D, YYYY is also acceptable... (for the Americans)
   - [ ] Try not to let some texts be broken onto a new line e.g. ''New Zealand'' can be written as ''New~Zealand'' to ensure that the 'New' and 'Zealand' are on the same line.
   - [ ] Check quotation marks. ` vs '
@@ -29,8 +29,8 @@ Formatting Checklist:
 - [ ] Tables/Figures
   - [ ] Captions titles should be above tables and below figures. Caption details for tables can be placed below the table.
   - [ ] Figures titles within the figure should be removed -- they should be placed as the caption title.
-  - [ ] If tables and figures are placed at the end, include an ''Insert Figure/Table ## about here.'' centered in the page where the table/figure should be placed.
-  - [ ] Tables/Figures should be refered to at least once within the text and ideally close to where the table/figure is placed.
+  - [ ] If tables and figures are placed at the end, include an ''Insert Figure/Table ## about here.'' centred in the page where the table/figure should be placed.
+  - [ ] Tables/Figures should be referred to at least once within the text and ideally close to where the table/figure is placed.
   - [ ] Asterisks used for levels of significance should be superscripted.
   - [ ] Acronyms used should be redefined in the caption.
   

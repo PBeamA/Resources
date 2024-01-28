@@ -19,7 +19,7 @@ Formatting Checklist:
   - [ ] Variables/maths in text should be written in math mode.
   - [ ] Dates should be written out consistently. Usually as D MMM YYYY, although MMM D, YYYY is also acceptable... (for the Americans)
   - [ ] Try not to let some texts be broken onto a new line e.g. ''New Zealand'' can be written as ''New~Zealand'' to ensure that the 'New' and 'Zealand' are on the same line.
-  - [ ] Check quotation marks. ` vs '
+  - [ ] Check quotation marks: ` vs '.
 - [ ] Math
   - [ ] Equations/formulas should be connected to the text and have appropriate punctuation.
   - [ ] Brackets/Parentheses/Braces should be correctly sized (using ''\left'' and ''\right'')

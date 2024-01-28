@@ -1,0 +1,36 @@
+Formatting Checklist:
+- [ ] References
+  - [ ] Remove the ''The'' in front of journal titles
+  - [ ] Journals title capitalisation
+  - [ ] Author names with special characters
+  - [ ] Page/Volume numbers or Forthcoming?
+  - [ ] Comma after punctuation
+  - [ ] Capitalisation of proper nouns
+  - [ ] Capitalisation of acronyms
+  - [ ] All referenced must be cited at least once within the text. All citations must be included in the reference.
+- [ ] Text
+  - [ ] Acronyms must be defined before use. After they are defined, they must be used.
+  - [ ] Oxford comma -- optional but needs to be consistent
+  - [ ] Footnotes should not be placed before punctuation. They must come after.
+  - [ ] Check spacing before/after footnotes and other punctuation/symbols.
+  - [ ] No contractions.
+  - [ ] Avoid ampersands (&) 
+  - [ ] (Optional) no personal pronouns.
+  - [ ] Variables/maths in text should be writtin in math mode.
+  - [ ] Dates should be written out consistently. Usually as D MMM YYYY, although MMM D, YYYY is also acceptable... (for the Americans)
+  - [ ] Try not to let some texts be broken onto a new line e.g. ''New Zealand'' can be written as ''New~Zealand'' to ensure that the 'New' and 'Zealand' are on the same line.
+  - [ ] Check quotation marks. ` vs '
+- [ ] Math
+  - [ ] Equations/formulas should be connected to the text and have appropriate punctuation.
+  - [ ] Brackets/Parentheses/Braces should be correctly sized (using ''\left'' and ''\right'')
+  - [ ] Negative numbers should be written in math mode. See the differences between en dash, em dash, hyphen, and minus sign.
+  - [ ] Superscripts/subscripts should be written in braces {} to ensure that things are in the correct location.
+  - [ ] max, min, log, ln, exp, sin, and cos etc etc. should be written with a backslash e.g. \max.
+- [ ] Tables/Figures
+  - [ ] Captions titles should be above tables and below figures. Caption details for tables can be placed below the table.
+  - [ ] Figures titles within the figure should be removed -- they should be placed as the caption title.
+  - [ ] If tables and figures are placed at the end, include an ''Insert Figure/Table ## about here.'' centered in the page where the table/figure should be placed.
+  - [ ] Tables/Figures should be refered to at least once within the text and ideally close to where the table/figure is placed.
+  - [ ] Asterisks used for levels of significance should be superscripted.
+  - [ ] Acronyms used should be redefined in the caption.
+  

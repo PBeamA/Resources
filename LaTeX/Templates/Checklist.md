@@ -36,5 +36,5 @@ Formatting Checklist:
   - [ ] Asterisks used for levels of significance should be superscripted.
   - [ ] Acronyms used should be redefined in the caption.
   - [ ] In general, tables and figures should be centered.
-  - [ ] If possible, figures should be vector graphics -- usually saved as a .pdf, .eps, .svg. (.svg works well with MSWord.)
+  - [ ] If possible, figures should be vector graphics -- usually saved as a .pdf, .eps, .svg. (.svg usually works well with MSWord.)
   

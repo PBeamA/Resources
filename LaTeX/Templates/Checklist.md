@@ -22,10 +22,10 @@ Formatting Checklist:
   - [ ] Check quotation marks: ` vs '.
 - [ ] Math
   - [ ] Equations/formulas should be connected to the text and have appropriate punctuation.
-  - [ ] Brackets/Parentheses/Braces should be correctly sized (using ''\left'' and ''\right'')
+  - [ ] Brackets/Parentheses/Braces should be correctly sized (using ''\left'' and ''\right'' -- for LaTeX)
   - [ ] Negative numbers should be written in math mode. See the differences between en dash, em dash, hyphen, and minus sign.
   - [ ] Superscripts/subscripts should be written in braces {} to ensure that things are in the correct location.
-  - [ ] max, min, log, ln, exp, sin, and cos etc etc. should be written with a backslash e.g. \max.
+  - [ ] max, min, log, ln, exp, sin, and cos etc etc. should be written with a backslash e.g. \max -- for LaTeX.
 - [ ] Tables/Figures
   - [ ] Captions titles should be above tables and below figures. Caption details for tables can be placed below the table.
   - [ ] Figures titles within the figure should be removed -- they should be placed as the caption title.
@@ -33,4 +33,5 @@ Formatting Checklist:
   - [ ] Tables/Figures should be referred to at least once within the text and ideally close to where the table/figure is placed.
   - [ ] Asterisks used for levels of significance should be superscripted.
   - [ ] Acronyms used should be redefined in the caption.
+  - [ ] In general, tables and figures should be centered.
   

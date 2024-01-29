@@ -1,4 +1,5 @@
 Formatting Checklist:
+(Mainly for LaTeX)
 - [ ] References
   - [ ] Remove the ''The'' in front of journal titles.
   - [ ] Journals title capitalisation

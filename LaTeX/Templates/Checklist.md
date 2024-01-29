@@ -20,6 +20,7 @@ Formatting Checklist:
   - [ ] Dates should be written out consistently. Usually as D MMM YYYY, although MMM D, YYYY is also acceptable... (for the Americans)
   - [ ] Try not to let some texts be broken onto a new line e.g. ''New Zealand'' can be written as ''New~Zealand'' to ensure that the 'New' and 'Zealand' are on the same line. (Ctrl + Shift + Space for MSWord)
   - [ ] Check quotation marks: ` vs '.
+  - [ ] Avoid spamming Enter to start a new page. LaTeX: \pagebreak. MSWord: Ctrl + Enter.
 - [ ] Math
   - [ ] Equations/formulas should be connected to the text and have appropriate punctuation.
   - [ ] Brackets/Parentheses/Braces should be correctly sized (using ''\left'' and ''\right'' -- for LaTeX)
@@ -34,4 +35,5 @@ Formatting Checklist:
   - [ ] Asterisks used for levels of significance should be superscripted.
   - [ ] Acronyms used should be redefined in the caption.
   - [ ] In general, tables and figures should be centered.
+  - [ ] If possible, figures should be vector graphics -- usually saved as a .pdf, .eps, .svg. (.svg works well with MSWord.)
   

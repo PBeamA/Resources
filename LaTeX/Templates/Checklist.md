@@ -1,5 +1,4 @@
-Formatting Checklist:
-(Mainly for LaTeX)
+Formatting Checklist: (Mainly for LaTeX)
 - [ ] References
   - [ ] Remove the ''The'' in front of journal titles.
   - [ ] Journals title capitalisation
@@ -39,3 +38,7 @@ Formatting Checklist:
   - [ ] In general, tables and figures should be centered.
   - [ ] If possible, figures should be vector graphics -- usually saved as a .pdf, .eps, .svg. (.svg usually works well with MSWord.)
   
+
+Most things are subjective and can be argued against -- please make sure you don't argue against yourself by being inconsistent.
+There is always a lot of background work that goes into writing a paper. The only thing readers see is what we present to them. If what they see is inconsistent and not correct that is a bad signal for them when they look at your work.
+

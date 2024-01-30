@@ -22,6 +22,7 @@ Formatting Checklist:
   - [ ] Try not to let some texts be broken onto a new line e.g. ''New Zealand'' can be written as ''New~Zealand'' to ensure that the 'New' and 'Zealand' are on the same line. (Ctrl + Shift + Space for MSWord)
   - [ ] Check quotation marks: ` vs '.
   - [ ] Avoid spamming Enter to start a new page. LaTeX: \pagebreak. MSWord: Ctrl + Enter.
+  - [ ] Have consistent fonts and font sizes.
 - [ ] Math
   - [ ] Equations/formulas should be connected to the text and have appropriate punctuation.
   - [ ] Brackets/Parentheses/Braces should be correctly sized (using ''\left'' and ''\right'' -- for LaTeX)

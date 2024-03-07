@@ -8,7 +8,7 @@ Formatting Checklist: (Mainly for LaTeX)
   - [ ] Capitalisation of proper nouns
   - [ ] Capitalisation of acronyms
   - [ ] All referenced must be cited at least once within the text. All citations must be included in the reference.
-- [ ] Text
+- [ ] Text/English
   - [ ] Acronyms must be defined before use. After they are defined, they must be used.
   - [ ] Oxford comma -- optional but needs to be consistent.
   - [ ] Footnotes should not be placed before punctuation. They must come after.
@@ -22,6 +22,7 @@ Formatting Checklist: (Mainly for LaTeX)
   - [ ] Check quotation marks: ` vs '.
   - [ ] Avoid spamming Enter to start a new page. LaTeX: \pagebreak. MSWord: Ctrl + Enter.
   - [ ] Have consistent fonts and font sizes.
+  - [ ] In MSWord use the spell checker: F7.
 - [ ] Math
   - [ ] Equations/formulas should be connected to the text and have appropriate punctuation.
   - [ ] Brackets/Parentheses/Braces should be correctly sized (using ''\left'' and ''\right'' -- for LaTeX)

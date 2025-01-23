@@ -4,7 +4,7 @@ Formatting Checklist: (Mainly for LaTeX)
   - [ ] Journals title capitalisation
   - [ ] Author names with special characters
   - [ ] Page/Volume numbers or Forthcoming?
-  - [ ] Comma after punctuation
+  - [ ] Remove the comma after ?! etc at the end of the title
   - [ ] Capitalisation of proper nouns
   - [ ] Capitalisation of acronyms
   - [ ] All referenced must be cited at least once within the text. All citations must be included in the reference.
